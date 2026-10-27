@@ -1,33 +1,35 @@
-# SAQ Windows 자동 실행기 배포
+# SAQ Windows 자동 실행기 1.0.1
 
-[시작 파일 ZIP 다운로드](https://github.com/smart-ants/smart-ants/raw/refs/heads/saq-delivery-20261027/SAQ_START.zip)
+[새 자동 시작 ZIP 다운로드](https://github.com/smart-ants/smart-ants/raw/refs/heads/saq-delivery-20261027/SAQ_START_1_0_1.zip)
 
-브라우저가 CMD를 텍스트로 표시하는 경우를 위해 시작 파일만 담은 ZIP을 함께 제공합니다.
-ZIP 안의 `SAQ_START.cmd`를 Windows에서 실행하면 됩니다. 전체 설치 패키지는 시작 파일에 내장되어 있습니다.
+기존 창을 닫고 ZIP 안의 SAQ_START.cmd를 실행하세요. 지정 폴더 생성, 내장 패키지 저장·압축 해제,
+실행 화면 열기가 이어집니다. 기본 저장 폴더는 `C:\SAQ_AUDIT\DOWNLOADS`입니다.
 
-[자동 시작 파일 다운로드](https://github.com/smart-ants/smart-ants/raw/refs/heads/saq-delivery-20261027/SAQ_START.cmd)
+## DOCKER_REQUIRED 수정
 
-[설치 ZIP 다운로드](https://github.com/smart-ants/smart-ants/raw/refs/heads/saq-delivery-20261027/SAQ_INSTALLER.zip)
+이 코드는 ChatGPT/Codex 결제 오류가 아니라 Docker 실행 파일을 찾지 못했다는 뜻입니다.
+새 버전은 PATH와 Windows 머신/사용자 기본 설치 경로를 함께 검색합니다.
+설치된 Docker Desktop이 꺼져 있으면 정상 실행하고 로컬 Linux 엔진 준비를 기다립니다.
 
-실행 파일을 Windows에서 한 번 열면 기본 폴더 `C:\SAQ_AUDIT\DOWNLOADS`를 만들고
-내장 ZIP 저장, 탐색기 열기, 압축 해제, 실행 화면 열기와 흩어진 SAQ ZIP 정리를 진행합니다.
-저장 위치는 화면에서 변경하고 기억할 수 있습니다.
+Docker가 없으면 새 화면의 **Docker 준비**를 누르세요. 공식 Windows 아키텍처용 설치 파일을
+기억한 폴더에 자동 다운로드하고, Docker Inc의 유효한 Authenticode 서명을 확인한 뒤에만
+**공식 설치 실행** 버튼을 활성화합니다. 설치 실행 직전 서명과 해시를 다시 확인합니다.
+설치 약관·관리자 권한·WSL·재시작은 공식 화면에서 사용자가 직접 선택해야 합니다.
+Docker가 준비되면 원래 창의 **1 실행 TEST**를 다시 누르세요.
 
-- ZIP은 복사 후 해시를 확인한 뒤 원래 위치에서 제거하며 중복은 별도 이름으로 보존합니다.
-- 인증키·DB·백업·V7 운영 폴더는 제외합니다. 접근/검색 제한은 미확인으로 기록합니다.
-- 1 TEST → PASS → 2 자동 백업·독립 API 코드 적용 → 3 결과 확인 순서입니다.
-- 실패 시 자동 원복하고 검증하며, 복구를 완료하지 못하면 복구 필요 상태를 표시합니다.
-- 원본 Stage10, 운영 DB, 차트·CSS와 P9/P10 보관 패치는 적용하지 않습니다.
+1 TEST → 실제 PASS → 2 백업 후 독립 API 코드 적용 → 성공 시 3 결과물 확인 순서입니다.
+실패하면 원복하고 확인합니다. 원복까지 실패하면 복구 필요로 표시합니다.
+최근 24시간 안에 ZIP 전체 정리가 완료됐으면 과거 기록을 표시하고 반복 검색을 생략합니다.
+새 ZIP 전체 검색은 **ZIP 다시 정리**를 누르세요. 동일 이름 ZIP은 덮어쓰지 않습니다.
 
-Python 3.11 이상(Tk 포함)이 필요하며 전체 TEST에는 실행 중인 Docker Linux 엔진과
-PyPI/Docker Hub 연결이 필요합니다. 전역 Python/Docker를 자동 설치하지 않습니다.
-준비 미완료·실패·건너뜀은 STOP이며 적용 버튼이 열리지 않습니다.
+## 검증과 범위
 
-검증: Linux 실행기 39개 통과, 실제 임시 PostgreSQL 백엔드 56개 통과(별도 두 실행),
-신규 설치·적용 실패 시 정확한 백업/원복, 업로드 원본을 보존한 P9·HF1 임시 복사본 이동 확인.
-Windows PowerShell/탐색기/Tk UI는 아직 실행 검증하지 않았습니다. 사용자 PC에도 아직 미적용입니다.
-실데이터 수집·운영 DB 연결·운영 배포 완료를 의미하지 않습니다.
+실행기 검사 53개 통과. 실제 임시 PostgreSQL 백엔드 56개 통과(독립 두 실행), 신규 설치와
+고의 실패 시 정확한 원복 검증. 기존 사용자 화면에서는 ZIP 161개 이동과 API 적용 STOP을 확인했습니다.
+새 Docker 준비 화면·공식 설치 파일 다운로드·Windows 서명 검증·설치는 아직 Windows에서 실행하지 못했습니다.
+클라우드에서 공식 설치 파일 접근은403이었으며 사용자 PC의 다운로드 가능 여부를 의미하지 않습니다.
 
-SHA-256은 `SAQ_INSTALLER_SHA256.json`, 상세 근거는 `TEST_REPORT.md`에 있습니다.
-이 브랜치는 배포 파일만 포함한 독립 이력이며 기존 main과 작업 디렉터리는 변경하지 않았습니다.
-저장소가 비공개이면 이 저장소에 접근 가능한 GitHub 계정으로 로그인해서 받으세요.
+원본 Stage10, 운영 DB, 키, 차트·CSS, 보관 P9/P10 패치는 적용하지 않습니다.
+실데이터 수집이나 운영 DB 연결·배포 완료가 아닙니다. main은 변경하지 않은 별도 배포 브랜치입니다.
+SHA-256은 SAQ_INSTALLER_SHA256.json, 상세 근거는 TEST_REPORT.md에 있습니다.
+저장소가 비공개이면 접근 가능한 GitHub 계정으로 로그인하세요.
