@@ -1,5 +1,10 @@
 # SAQ Windows 자동 실행기 배포
 
+[시작 파일 ZIP 다운로드](https://github.com/smart-ants/smart-ants/raw/refs/heads/saq-delivery-20261027/SAQ_START.zip)
+
+브라우저가 CMD를 텍스트로 표시하는 경우를 위해 시작 파일만 담은 ZIP을 함께 제공합니다.
+ZIP 안의 `SAQ_START.cmd`를 Windows에서 실행하면 됩니다. 전체 설치 패키지는 시작 파일에 내장되어 있습니다.
+
 [자동 시작 파일 다운로드](https://github.com/smart-ants/smart-ants/raw/refs/heads/saq-delivery-20261027/SAQ_START.cmd)
 
 [설치 ZIP 다운로드](https://github.com/smart-ants/smart-ants/raw/refs/heads/saq-delivery-20261027/SAQ_INSTALLER.zip)
